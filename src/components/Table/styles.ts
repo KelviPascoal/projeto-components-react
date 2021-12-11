@@ -9,6 +9,11 @@ export const Table = styled.table`
 td, th {
   border: 1px solid #ddd;
   padding: 8px;
+
+  div {
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
 tr:nth-child(even){background-color: #f2f2f2;}

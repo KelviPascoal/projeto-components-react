@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Pagination } from './Pagination'
 import * as S from './styles'
 import { SortProps, TableProps } from './types'
-
+import { BiChevronDown, BiChevronUp } from 'react-icons/bi'
 
 
 export function Table({ columns, data, handleSort, pagination: { handlePagination, pageSize, total } }: TableProps) {
@@ -24,7 +24,13 @@ export function Table({ columns, data, handleSort, pagination: { handlePaginatio
                                     ? onSorting({ property: column.property, direction: 'desc' })
                                     : onSorting({ property: column.property, direction: 'asc' })
                             }}>
-                                {column.title}
+                                <div>
+                                    <span>{column.title}</span>
+
+                                    {sorting.direction === 'asc' && <span style={{ opacity: sorting.property === column.property ? 1 : 0 }}><BiChevronDown /></span>}
+                                    {sorting.direction === 'desc' && <span style={{ opacity: sorting.property === column.property ? 1 : 0 }}><BiChevronUp /></span>}
+
+                                </div>
                             </th>
                         ))}
                     </tr>
