@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import * as S from './styles'
 
 export interface ColumnProps {
@@ -7,21 +8,42 @@ export interface ColumnProps {
 
 export interface TableProps {
     data: any[];
-    columns: ColumnProps[]
+    columns: ColumnProps[];
+    handleSort: (sort: SortProps) => void;
 }
 
-export function Table({ columns, data }: TableProps) {
+export interface PaginationProps { }
+
+export interface SortProps {
+    property: string;
+    direction: 'asc' | 'desc';
+}
+
+export function Table({ columns, data, handleSort }: TableProps) {
+    const [sorting, setSorting] = useState<SortProps>({} as SortProps)
+
+    function onSorting(sort: SortProps) {
+        handleSort(sort)
+        setSorting(sort)
+    }
+
     return (
         <S.Table>
             <thead>
                 <tr>
                     {columns.map((column) => (
-                        <th key={column.property}>{column.title}</th>
+                        <th key={column.property} onClick={() => {
+                            sorting.property === column.property && sorting.direction === 'asc'
+                                ? onSorting({ property: column.property, direction: 'desc' })
+                                : onSorting({ property: column.property, direction: 'asc' })
+                        }}>
+                            {column.title}
+                        </th>
                     ))}
                 </tr>
             </thead>
             <tbody>
-                {data.map((item, i) => (
+                {data.map((item) => (
                     <tr key={item.id}>
                         {columns.map(column => (
                             <td key={item[column.property]}>{item[column.property]}</td>

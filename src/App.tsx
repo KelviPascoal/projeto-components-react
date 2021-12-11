@@ -1,4 +1,4 @@
-import { ColumnProps, Table } from "./components/Table";
+import { ColumnProps, SortProps, Table } from "./components/Table";
 
 const columns: ColumnProps[] = [
   {
@@ -24,40 +24,43 @@ const data = [
   },
   {
     id: 2,
-    name: 'Kelvi',
-    lastName: 'Jhones',
-    age: 23,
+    name: 'Erick',
+    lastName: 'Tchola',
+    age: 26,
   },
   {
     id: 3,
-    name: 'Kelvi',
-    lastName: 'Jhones',
-    age: 23,
+    name: 'Patrick',
+    lastName: 'AAAAAA',
+    age: 30,
   },
   {
     id: 4,
-    name: 'Kelvi',
-    lastName: 'Jhones',
-    age: 23,
+    name: 'Lucas',
+    lastName: 'ASDASDASD',
+    age: 27,
   },
   {
     id: 5,
-    name: 'Kelvi',
-    lastName: 'Jhones',
+    name: 'Hiago',
+    lastName: 'Baço',
     age: 23,
   },
   {
     id: 6,
-    name: 'Kelvi',
-    lastName: 'Jhones',
-    age: 23,
+    name: 'Sullan',
+    lastName: 'Lindao',
+    age: 25,
   },
 ]
 
-
 export function App() {
+  function handleSort(sort: SortProps) {
+    console.log('sort:', sort);
+  }
+
   return (
-    <Table data={data} columns={columns} />
+    <Table data={data} columns={columns} handleSort={handleSort} />
   )
 }
 
