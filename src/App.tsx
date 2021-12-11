@@ -1,4 +1,5 @@
-import { ColumnProps, PaginationProps, SortProps, Table } from "./components/Table";
+import { Table } from "./components/Table";
+import { ColumnProps, PaginationProps, SortProps } from "./components/Table/types";
 
 const columns: ColumnProps[] = [
   {

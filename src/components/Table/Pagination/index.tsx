@@ -1,4 +1,4 @@
-import { PaginationProps } from "..";
+import { PaginationProps } from "../types";
 
 export function Pagination({ handlePagination, pageSize, total }: PaginationProps) {
     const numbers: number[] = [];

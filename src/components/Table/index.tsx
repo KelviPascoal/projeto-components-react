@@ -1,29 +1,9 @@
 import { useState } from 'react'
 import { Pagination } from './Pagination'
 import * as S from './styles'
+import { SortProps, TableProps } from './types'
 
-export interface ColumnProps {
-    property: string;
-    title: string;
-}
 
-export interface TableProps {
-    data: any[];
-    columns: ColumnProps[];
-    handleSort: (sort: SortProps) => void;
-    pagination: PaginationProps;
-}
-
-export interface PaginationProps {
-    pageSize: number;
-    total: number
-    handlePagination: (page: number) => void;
-}
-
-export interface SortProps {
-    property: string;
-    direction: 'asc' | 'desc';
-}
 
 export function Table({ columns, data, handleSort, pagination: { handlePagination, pageSize, total } }: TableProps) {
     const [sorting, setSorting] = useState<SortProps>({} as SortProps)
