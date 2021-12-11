@@ -1,4 +1,4 @@
-import { ColumnProps, SortProps, Table } from "./components/Table";
+import { ColumnProps, PaginationProps, SortProps, Table } from "./components/Table";
 
 const columns: ColumnProps[] = [
   {
@@ -56,11 +56,22 @@ const data = [
 
 export function App() {
   function handleSort(sort: SortProps) {
-    console.log('sort:', sort);
+    console.log('sort: ', sort);
+  }
+
+  function handlePagination(page: number) {
+    console.log('page: ', page);
+
+  }
+
+  const pagination: PaginationProps = {
+    handlePagination: handlePagination,
+    pageSize: 5,
+    total: 20
   }
 
   return (
-    <Table data={data} columns={columns} handleSort={handleSort} />
+    <Table data={data} columns={columns} handleSort={handleSort} pagination={pagination} />
   )
 }
 
